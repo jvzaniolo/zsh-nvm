@@ -1,8 +1,10 @@
 #!/usr/bin/env zsh
 
-export NVM_DIR="$HOME/.nvm"
+export NVM_DIR=${NVM_DIR:-"$HOME/.nvm"}
 
-command -v nvm >/dev/null 2>&1  || brew install nvm
+if ! command -v nvm &>/dev/null; then
+  brew install nvm
+fi
 
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
