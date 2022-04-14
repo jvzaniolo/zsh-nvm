@@ -4,6 +4,12 @@ This is my personal zsh plugin to handle `nvm`
 
 # Install
 
+`zsh-nvm` requires `nvm` to work. You can install it using Homebrew:
+
+```sh
+brew install nvm
+```
+
 ## zinit (recommended)
 
 ```sh
