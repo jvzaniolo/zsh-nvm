@@ -2,14 +2,13 @@
 
 export NVM_DIR="$HOME/.nvm"
 
-[ -s "/usr/local/opt/nvm/nvm.sh" ] || brew install nvm
+command -v nvm >/dev/null 2>&1  || brew install nvm
 
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
 
-# place this after nvm initialization!
 autoload -U add-zsh-hook
-load-nvmrc() {
+_zsh_nvm_auto_use() {
   local node_version="$(nvm version)"
   local nvmrc_path="$(nvm_find_nvmrc)"
 
@@ -26,5 +25,5 @@ load-nvmrc() {
     nvm use default
   fi
 }
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+
+[[ "$NVM_AUTO_USE" == true ]] && add-zsh-hook chpwd _zsh_nvm_auto_use && _zsh_nvm_auto_use
