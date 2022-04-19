@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/env/sh
 
 export NVM_DIR="$HOME/.nvm"
 
@@ -24,4 +24,4 @@ _zsh_nvm_auto_use() {
   fi
 }
 
-[[ "$NVM_AUTO_USE" == true ]] && add-zsh-hook chpwd _zsh_nvm_auto_use && _zsh_nvm_auto_use
+[ "$NVM_AUTO_USE" = true ] && add-zsh-hook chpwd _zsh_nvm_auto_use && _zsh_nvm_auto_use
